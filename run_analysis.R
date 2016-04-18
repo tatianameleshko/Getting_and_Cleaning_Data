@@ -1,5 +1,11 @@
 analyze_1set <-function(sub_dir){
-result_set <- cbind(subject_table,act_table,mean_table,std_table)
+  activity_table <- read.table(paste0(path_to_data,sub_dir,"/y_",sub_dir,".txt"))
+  vector_table <- read.table(paste0(path_to_data,sub_dir, "/X_",sub_dir,".txt"))
+  subject_table <- read.table(paste0(path_to_data,sub_dir,"/subject_",sub_dir,".txt"))
+  mean_table <- vector_table[,mean_names]
+  std_table <- vector_table[,std_names]
+  act_table <- data.frame(lapply(activity_table,function(x) x<-labels_table[[2]][x]))
+  result_df <- cbind(subject_table,act_table,mean_table,std_table)
 }
 
 main_function <- function() {
