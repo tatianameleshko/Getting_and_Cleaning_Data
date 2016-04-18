@@ -25,5 +25,5 @@ main_function <- function() {
   mean_names_avg <-as.character(sapply(mean_names,function(x) paste0(x,"_Avg")))
   std_names_avg <-as.character(sapply(std_names,function(x) paste0(x,"_Avg")))
   colnames(result_df_mean) <- c("Subject_ID","Activity",mean_names_avg,std_names_avg)
-  write.csv(result_df_mean,paste0(path_to_data,"result_df_mean.csv"))
+  write.table(result_df_mean,paste0(path_to_data,"result_df_mean.txt"),row.name=FALSE)
 }
